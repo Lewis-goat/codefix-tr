@@ -1,0 +1,10 @@
+{
+ "lang": "tr",
+ "host": "https://tr.codefixcoffee.com",
+ "ui": {
+  "home_title": "CodeFix Blog",
+  "home_desc": "Jura, De’Longhi, Philips/Saeco, Miele, Nespresso, GE ve Samsung için onarım rehberleri ve hata kodları.",
+  "back": "Siteye dön",
+  "footer": "codefixcoffee.com’dan onarım rehberleri ve hata kodu açıklamaları."
+ }
+}
