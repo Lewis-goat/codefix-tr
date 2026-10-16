@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>"Saeco Error 20: demleme grubu ve kapı switch'leri sorunu"</title>
+<meta name="description" content=""Saeco Error 20, demleme grubunun ya da bir kapı switch'inin tam oturmadığını gösterir. Resmi sıfırlama, grubun temizliği ve motor ihtimali burada."">
+<link rel="canonical" href="https://tr.codefixcoffee.com/blog/saeco-error-20-explained/">
+<link rel="alternate" hreflang="en" href="https://blog.codefixcoffee.com/post/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="fr" href="https://fr.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="de" href="https://de.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="es" href="https://es.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="it" href="https://it.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="pl" href="https://pl.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="nl" href="https://nl.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="pt" href="https://pt.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="hu" href="https://hu.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="cs" href="https://cs.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="ro" href="https://ro.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="sv" href="https://sv.codefixcoffee.com/blog/saeco-error-20-explained/" />
+  <link rel="alternate" hreflang="tr" href="https://tr.codefixcoffee.com/blog/saeco-error-20-explained/" />
+<link rel="stylesheet" href="/blog/blog.css">
+<link rel="alternate" type="application/rss+xml" title="CodeFix Blog" href="/blog/rss.xml">
+</head>
+<body>
+<header class="site"><div class="in"><a class="brand" href="/blog/">☕ CodeFix Blog</a><span><a href="/">Siteye dön</a></span></div></header>
+<main>
+<h1>"Saeco Error 20: demleme grubu ve kapı switch'leri sorunu"</h1>
+<p class="meta">2026-10-16</p>
+<p>Philips ve Saeco tam otomatik kahve makinelerinde görülen Error 20, kulağa büyük gelse de çoğu zaman öyle değildir. Philips'in Error 01'den 22'ye uzanan hata ailesinin parçası olarak LatteGo 2200/3200/4300/5400, Xelsis, Incanto ve eski Saeco modellerinde karşınıza çıkar; kılavuzlar bu aileyi iki noktaya yönlendirir: demleme grubu ve damlama tepsisiyle posa kabının oturmasını, servis kapısının kapanmasını izleyen switch'ler. Konunun tamamı <a href="https://tr.codefixcoffee.com/philips-saeco/espresso-machines/error-20/">Error 20 referans sayfamızda</a> duruyor; bu yazıda her şeyin yerine oturmasının neden bu kadar önemli olduğunu ve sorunun ne zaman daha derinde olduğunu anlatıyoruz.</p>
+<h2>Error 20 tam olarak neyi bildiriyor?</h2>
+<p>Philips servis kodları için model model açıklayan resmi bir tablo yayınlamaz; bu yüzden servis departmanı dışındaki hiç kimse Error 20'nin her modelde hangi parçayı adlandırdığını vaat edemez. Kılavuzların netleştirdiği şey yöndür: bu aralıktaki sayısal hatalar, demleme grubunun konumda algılanamamasına ya da damlama tepsisi, kahve posası kabı veya servis kapısı gibi bir parçanın yerine tam oturmamasına işaret eder.</p>
+<p>Her demleme döngüsünden önce ve sırasında makine bir dizi güvenlik kontakını ve demleme grubu pozisyon sensörünü yoklar; herhangi biri "sorun var" derse döngü durur ve ekranda Error 20 belirir:</p>
+<ul>
+<li>demleme grubu yerinde ve dinlenme konumunda durmalı</li>
+<li>damlama tepsisi sonuna kadar itilmiş olmalı</li>
+<li>kahve posası kabı tepsinin üstüne tıklayarak oturmalı</li>
+<li>servis kapısı tam kapanmış olmalı</li>
+</ul>
+<p>Bunların hiçbiri kapris değildir. Tam otomatik bir makine demleme grubunu gerçek bir mekanik döngüden geçirir; kapı açıkken veya grup yarım takılıyken bunu denemez. Pratikte birçok Error 20, tık sesi duyulacak kadar itilmemiş bir tepsiye ya da kontaklar arasında köprü kuran ıslak posaya indirgenebilir.</p>
+<h2>Beş dakikalık resmi sıfırlama: parça yok</h2>
+<ol>
+<li>Makineyi kapatın ve fişini çekin.</li>
+<li>Damlama tepsisiyle kahve posası kabını çıkarın ve ikisini de tık sesi gelene kadar sıkıca yeniden takın.</li>
+<li>Servis kapısını tam olarak kapatın.</li>
+<li>Makineyi yeniden açın.</li>
+</ol>
+<p>Kılavuzun bu arıza ailesi için yazdığı sıfırlama budur ve parçaları yeniden oturtup baştan başlatma dizisi vakaların gerçekten çoğunu temizler. Kod sonrasında kaybolduysa işiniz bitmiştir; yine de alttaki bölümü okuyun, çünkü geri dönüp gelen Error 20 size bir şey söylemeye çalışıyordur.</p>
+<h3>Kod geri gelirse: demleme grubunu temizleyin</h3>
+<p>Demleme grubu çıkarılabilen modellerde (çoğu LatteGo ve Incanto) sıradaki şüpheli grubun kendisidir:</p>
+<ol>
+<li>Makineyi kapatıp servis kapısını açın ve demleme grubunu çıkarın.</li>
+<li>Sabun kullanmadan ılık suyun altında iyice durulayın, sonra kendi kendine kurumasını bekleyin.</li>
+<li>Kılavuz raylara ve piston contasına az miktarda gıda güvenli silikon gres sürün.</li>
+<li>Raylar boyunca ilerletip tıklayana kadar oturtun, kapıyı kapatın ve makineyi açın.</li>
+</ol>
+<p>Ardından bir durulama programı çalıştırın. Kod temizlenirse makinenin temizleme programıyla devam edin: kahve yağlarıyla yapış hale gelmiş bir demleme grubu, tekrarlayan Error 20'lerin olağan alt nedenidir ve bunu adresleyen temizleme programıdır.</p>
+<p>Bir uyarı: demleme grubu çıkarılabilir değil de dahili olan Xelsis modellerinde parçaya ulaşmak için servis kapısını zorlamayın; o onarım biçimi servis tezgâhının işidir.</p>
+<p>Komşu kodlar da benzer bir hikâye anlatır — Error 03 "demleme grubu fazla kirli", Error 04 "demleme grubu doğru yerleştirilmemiş" anlamına gelir — ve ailenin bütünü <a href="https://tr.codefixcoffee.com/philips-saeco/">Philips / Saeco bölümümüzde</a> işlenmiştir.</p>
+<h2>Gerçek sorun motor veya pozisyon sensörü olduğunda</h2>
+<p>Tepsi, kap ve kapının gerçekten oturduğu, grubun temiz ve yağlanmış olduğu doğrulandığı hâlde Error 20 sürüyorsa tablo değişir: ya demleme grubu motoru kendi döngüsünü tamamlayamıyordur ya da pozisyon sensörü konumu geri okuyamıyordur. İkisi de dahili onarımdır — <a href="https://www.philips.com/support">Philips desteği</a> bu vakaları servis yönlendirmesine alır — ve kullanıcı düzeyinde denemeye değer bir çözüm yoktur.</p>
+<p>Bunu diğer ciddi Saeco ailesiyle karıştırmayın: Error 02, 10, 15 ve 22, Philips'in doğrudan servis gerektiğini söylediği dahili elektronik, pompa ve vana arızalarıdır. İşe yarar bir ipucu zamanlamadır; açılışta beliren kodlar çoğunlukla demleme grubu tahrikine veya bir vanaya, demleme ortasında belirenler pompa ya da basınç tarafına işaret eder. Ayrıntılar <a href="https://tr.codefixcoffee.com/philips-saeco/espresso-machines/error-02-10-15-or-22/">Error 02, 10, 15 ve 22 sayfamızda</a> yer alır.</p>
+<h3>Türkiye'den pratik notlar</h3>
+<p>Türkiye'de musluk suyunun sertliği bölgeden bölgeye ciddi fark gösterir; sert su, kahve yağlarına ek olarak grup içindeki birikintileri hızlandırır ve temizlik aralıklarını kısaltır. Filtreli veya kaliteli kaynak suyu kullanmak hem demleme grubunun yapışmasını hem de kireç çözme ihtiyacını azaltır. Gıda güvenli silikon gres, Türkiye'deki beyaz eşya yedek parça mağazalarında ve çevrim içi pazaryerlerinde kolayca bulunur; küçük bir tüp yıllarca yeter.</p>
+<h2>Maliyet</h2>
+<ul>
+<li>Silikon gres: yaklaşık €10 — çoğu Error 20'nin gerektirdiği tek "parça" budur.</li>
+<li>Hasarlıysa yeni bir demleme grubu: kabaca €80 ile €140 arası.</li>
+<li>Garanti dışı üretici servisi: genellikle iade kargo dahil €250–500; tek parçalık işlerde bağımsız espresso tamircileri çoğunlukla daha ucuzdur.</li>
+</ul>
+<p>Xelsis veya LatteGo sınıfı bir makinede bu onarım yapmaya değer — ve üçüncü maddeye kadar ilerleme ihtimaliniz düşüktür. <a href="https://tr.codefixcoffee.com/philips-saeco/espresso-machines/error-20/">Error 20 sayfasıyla</a> başlayın, sıfırlamayı sırasıyla uygulayın ve telefonu ancak her şey temiz, yağlanmış ve yerine tıkışmışken elinize alın.</p>
+</main>
+<footer>codefixcoffee.com’dan onarım rehberleri ve hata kodu açıklamaları.</footer>
+</body></html>
