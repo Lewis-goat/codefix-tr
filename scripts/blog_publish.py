@@ -53,6 +53,8 @@ def alt_tags(slug):
         tags.append(f'<link rel="alternate" hreflang="{l}" href="https://{l}.codefixcoffee.com/blog/{slug}/" />')
     return f'<link rel="canonical" href="{HOST}/blog/{slug}/">', "\n  ".join(tags)
 
+ADSENSE_SNIP = '''<meta name="google-adsense-account" content="ca-pub-9660119725457689"><script>(function(){var u="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9660119725457689";var d=false;function l(){if(d)return;d=true;var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src=u;document.head.appendChild(s)}["scroll","pointerdown","keydown","touchstart"].forEach(function(e){addEventListener(e,l,{once:true,passive:true})});addEventListener("load",function(){setTimeout(l,3500)})})();</script>'''
+
 def page(title, body, desc, canonical, alts="", extra_head=""):
     return f"""<!doctype html>
 <html lang="{LANG}">
@@ -64,7 +66,7 @@ def page(title, body, desc, canonical, alts="", extra_head=""):
 {alts}
 <link rel="stylesheet" href="/blog/blog.css">
 <link rel="alternate" type="application/rss+xml" title="CodeFix Blog" href="/blog/rss.xml">
-{extra_head}</head>
+{extra_head}{ADSENSE_SNIP}</head>
 <body>
 <header class="site"><div class="in"><a class="brand" href="/blog/">☕ CodeFix Blog</a><span><a href="/">{UI['back']}</a></span></div></header>
 <main>
