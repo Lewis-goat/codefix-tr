@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breville ve Sage Oracle buhar kodları — önce ne kontrol edilmeli</title>
+<meta name="description" content="Oracle'ın buhar tarafındaki Error ve ER kodları ne anlatıyor? Önce denenmesi gereken purge rutini ve kirecin gerçek arıza olduğu durumlar.">
+<link rel="canonical" href="https://tr.codefixcoffee.com/blog/breville-oracle-steam-guide/">
+<link rel="alternate" hreflang="en" href="https://blog.codefixcoffee.com/post/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="fr" href="https://fr.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="de" href="https://de.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="es" href="https://es.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="it" href="https://it.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="pl" href="https://pl.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="nl" href="https://nl.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="pt" href="https://pt.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="hu" href="https://hu.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="cs" href="https://cs.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="ro" href="https://ro.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="sv" href="https://sv.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+  <link rel="alternate" hreflang="tr" href="https://tr.codefixcoffee.com/blog/breville-oracle-steam-guide/" />
+<link rel="stylesheet" href="/blog/blog.css">
+<link rel="alternate" type="application/rss+xml" title="CodeFix Blog" href="/blog/rss.xml">
+<meta name="google-adsense-account" content="ca-pub-9660119725457689"><script>(function(){var u="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9660119725457689";var d=false;function l(){if(d)return;d=true;var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src=u;document.head.appendChild(s)}["scroll","pointerdown","keydown","touchstart"].forEach(function(e){addEventListener(e,l,{once:true,passive:true})});addEventListener("load",function(){setTimeout(l,3500)})})();</script></head>
+<body>
+<header class="site"><div class="in"><a class="brand" href="/blog/">☕ CodeFix Blog</a><span><a href="/">Siteye dön</a></span></div></header>
+<main>
+<h1>Breville ve Sage Oracle buhar kodları — önce ne kontrol edilmeli</h1>
+<p class="meta">2026-10-22</p>
+<p>Breville Oracle'ın buhar tarafı makinenin en meşgul bölgesidir: paslanmaz buhar kazanı, otomatik köpürten çubuk, seviye probları ve bir dolum pompası, hepsi her gün ısı altındadır. Makinenin hata kodlarının da büyük bölümü buradan çıkar. Oracle ailesi, Breville'in yayınlamadığı 32 girişli servis tablosunu kullanır; İngiltere'de aynı donanım <strong>Sage</strong> rozetini taşır ve kodlar birebir aynıdır. Kırık parça varsayımına geçmeden önce ucuz kontrolleri çalışın: buhar tarafındaki duruşların çoğunun nedeni tıkalı bir çubuk ucu, yapılmamış bir purge ya da prob üzerindeki kireçtir.</p>
+<h2>Buhar kodları Oracle tablosunda nerede durur</h2>
+<p>Oracle (BES980) ve Oracle Touch (BES990) tek bir tablo paylaşır; BES980 girişleri "Error 1"–"Error 32", BES990 ise ER önekiyle gösterir. Buharla ilgili girişler beş yerde toplanır:</p>
+<ul>
+<li><strong>Error 1–4</strong> — buhar kazanı sıcaklık sensörü: açılışta açık devre, çalışırken sinyal kaybı, iki durum için de kısa devre. Tek sensör, dört anlatım biçimi.</li>
+<li><strong>Error 13–16</strong> — buhar çubuğunun kendi sıcaklık sensörü için aynı dörtlü: otomatik köpürtmeyi doğru süt sıcaklığında durduran problar. Bunlar makinenin en ıslak köşesinde yaşar.</li>
+<li><strong>Error 18</strong> — buhar kazanının normal şekilde ısınmaması.</li>
+<li><strong>Error 20 ve 21</strong> — buhar kazanı su seviyesi veya dolum pompası sorunları; kartın beklediğiyle uyuşmayan seviye probu okuması.</li>
+<li><strong>Error 26</strong> — buhar kazanı hedefin üzerine ısındı; <strong>Error 32</strong> ise buhar kazanı kaçağı veya dolum başarısızlığı.</li>
+</ul>
+<p>Çubuğa yakın görünen her kod buhar tarafına ait değildir: 5–8 arası kahve kazanının sensörünündür ve <a href="https://tr.codefixcoffee.com/breville/oracle-bes980/error-8/">Error 8</a> çalışma sırasındaki kısa devre girişidir. Aileleri ayırt etmenin yolu kayıtlı günlüğü okumaktır — BES980'de makine kapalıyken 1 CUP, 2 CUP ve POWER birlikte basılarak Error Storage açılır ve 32 kodun tamamı sayaçlarıyla gezilir.</p>
+<h2>Önce bunu deneyin — purge rutini</h2>
+<p>Zayıf ya da tükürerek gelen buhar, ya da bir süt içeceğinin hemen ardından beliren kod, çoğu zaman kazandan değil uçtan söz eder:</p>
+<ol>
+<li>Fişi çekin ve çubuğun soğumasını bekleyin.</li>
+<li>Buhar ucunu sökün; az miktarda kireç çözücü eklenmiş sıcak suda bekletin, temizlik aracındaki iğneyle her deliği tek tek açın.</li>
+<li>Purge çalıştırın — uç takılı değilken damlama tepsisine yaklaşık on saniye buhar, sonra uç takılıyken yine on saniye.</li>
+<li>Bu andan itibaren her süt kullanımının ardından çubuğu purge'layın; uçta kuruyan süt, bu duruşların çoğunu başlatan şeydir.</li>
+</ol>
+<p>Oracle Jet gibi buhar basıncını da izleyen bir modelde (E16 kodu) kabuk tutmuş bir uç, buharın zayıfladığını siz fark etmeden kodu tetikleyebilir.</p>
+<h2>Sertlik, kireç ve seviye probları</h2>
+<p>Suyun sert olduğu yerlerde kireç kendi hata kodlarını yazar. Buhar kazanı seviye probları sürekli sıcak su içindedir; kaplayan kireç tabakası onları yalıtır ve kazan tamken karta "su yok" okutur — Error 20 veya 21'in klasik yolu budur ve Error 32'nin dolum hatası da aynı kökene bağlanır. Kireç, çubuk yolunda ve dolum pompasının girişinde de birikir. Buhar kazanı çevrimini de içeren tam bir kireç çözme, yapabileceğiniz en ucuz teşhistir ve bu kodların şaşırtıcı bir kısmını tek başına temizler.</p>
+<p>Aynı serinin kardeşi de aynı dersi verir: Dual Boiler 00–12 kodlarını kendi kendine test menüsünde saklar ve <a href="https://tr.codefixcoffee.com/breville/dual-boiler-bes920/00/">kod 00</a> — buhar kazanı sensörü algılanmadı — sert su altında birebir aynı davranan seviye ve dolum girişlerinin başında oturur. Çubuk bakımı ve kireç çözme rutinleri için Sage'in <a href="https://www.sageappliances.co.uk/">destek sayfalarındaki</a> rehberler ve videolar da iyi bir başlangıçtır.</p>
+<h3>Türkiye'de su sertliği</h3>
+<p>Türkiye'de şebeke suyunun sertliği şehre, hatta semte göre ciddi ölçüde değişir; İç Anadolu ve Ege'de sert su, Karadeniz'de ise yumuşak su yaygındır. Sert su bölgelerinde kireç çözme aralığını üreticinin önerdiği süreden kısa tutmak, buhar kazanı problarının ve dolum pompasının ömrünü belirgin biçimde uzatır. Mümkünse sürahi başı filtre kullanmak, kazana giren kireç yükünü baştan azaltır.</p>
+<h2>Ne zaman sökmeli — kireç çözmenin sınırı</h2>
+<p>Önce kireç çözme, sonra sökme; ama sınırı bilin:</p>
+<ul>
+<li><strong>Kireç çözme ile başlayın:</strong> seviye, prob ve dolum kodlarında (20, 21, 32), koda bağlanmamış zayıf buharda ve son çevriminden üzerinden üç aydan fazla geçmiş makinede. Maliyet: bir şişe kireç çözücü.</li>
+<li><strong>Kireç çözme çözmez:</strong> yeni kireç çözülmüş, ısınmış makinede anında geri dönen sensör kodu — ister 1–4 arasındaki buhar girişi ister kahve tarafındaki <a href="https://tr.codefixcoffee.com/breville/oracle-bes980/error-8/">Error 8</a> olsun. Kireç çözmeden sağ çıkan kod, sensörün kendisini, kablosunu veya konektörünü işaret eder.</li>
+<li><strong>Error 26 tekrarlıyorsa durup contalara bakın:</strong> kaçırılan bir buhar probu o-ring'i buharı sensör kablosuna ısıtır ve kontrolden çıkan kazanı taklit eder. Yeni prob o-ring'leri ucuzdur; ısıtıcıyı kapatmayı reddeden bir triac kartı öyle değildir.</li>
+<li><strong>Error 18</strong>, artık hiç buhar ısıtmayan makinede genelde ısıtıcı tarafındadır — termal sigorta, ısıtma elemanı veya kart — kireç değil; bu bir temizlik değil tamir işidir. Sökme gerektiren işlerde <a href="https://www.ifixit.com/">iFixit'in onarım kılavuzları</a> multimetre kullanımı ve güvenlik adımları için iyi bir kaynaktır.</li>
+</ul>
+<h2>Parçalar ne kadara gelir</h2>
+<p>Orijinal sıcaklık sensörü takımları, hangi sensör olduğuna göre yaklaşık €25–€95 aralığındadır; kendi sensörünü de içeren buhar çubuğu takımları €60–€95 civarındadır, prob ve o-ring kiti yaklaşık €85, dolum pompası €30–€60. Karşı tarafta garanti dışı üretici teklifleri iç arızalarda yaygın olarak €300–€500'dür; önce bir şişe kireç çözücü, ardından sensör seviyesinde bir tamir neredeyse her zaman daha iyi aritmetiktir. Aynı tabloların Sage etiketli anlatımı için sitemizin <a href="https://tr.codefixcoffee.com/uk/">İngiltere sürümüne</a> göz atabilirsiniz.</p>
+</main>
+<footer>codefixcoffee.com’dan onarım rehberleri ve hata kodu açıklamaları.</footer>
+</body></html>
