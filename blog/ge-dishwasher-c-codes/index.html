@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GE bulaşık makinesi C kodları — drenaj, dolum ve ısınma arızaları</title>
+<meta name="description" content="GE bulaşık makinelerinde C1–C8 drenaj, dolum ve ısınma arızalarını, 888 ile CFE kart kodlarını kapsar; son hatayı okuyan servis menüsü hilesi dahil.">
+<link rel="canonical" href="https://tr.codefixcoffee.com/blog/ge-dishwasher-c-codes/">
+<link rel="alternate" hreflang="en" href="https://blog.codefixcoffee.com/post/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="fr" href="https://fr.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="de" href="https://de.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="es" href="https://es.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="it" href="https://it.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="pl" href="https://pl.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="nl" href="https://nl.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="pt" href="https://pt.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="hu" href="https://hu.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="cs" href="https://cs.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="ro" href="https://ro.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="sv" href="https://sv.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+  <link rel="alternate" hreflang="tr" href="https://tr.codefixcoffee.com/blog/ge-dishwasher-c-codes/" />
+<link rel="stylesheet" href="/blog/blog.css">
+<link rel="alternate" type="application/rss+xml" title="CodeFix Blog" href="/blog/rss.xml">
+<meta name="google-adsense-account" content="ca-pub-9660119725457689"><script>(function(){var u="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9660119725457689";var d=false;function l(){if(d)return;d=true;var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src=u;document.head.appendChild(s)}["scroll","pointerdown","keydown","touchstart"].forEach(function(e){addEventListener(e,l,{once:true,passive:true})});addEventListener("load",function(){setTimeout(l,3500)})})();</script></head>
+<body>
+<header class="site"><div class="in"><a class="brand" href="/blog/">☕ CodeFix Blog</a><span><a href="/">Siteye dön</a></span></div></header>
+<main>
+<h1>GE bulaşık makinesi C kodları — drenaj, dolum ve ısınma arızaları</h1>
+<p class="meta">2026-10-23</p>
+<p>GE bulaşık makineleri arızaları ekranda C kodlarıyla bildirir: C1'den C8'e, dolum sorunlarında H2O'ya ve kartlar memnun olmadığında 888 ya da CFE'ye kadar. Çoğu üreticinin tersine GE, her kodun ne demek olduğuna dair resmî bir liste yayınlamaz; kullanıcı iki karakterlik kodu belirtiyle kendi eşleştirmek zorunda kalır — <a href="https://www.geappliances.com/">GE'nin kendi destek sayfalarında</a> bile bu tablo bulunmaz. <a href="https://tr.codefixcoffee.com/ge/dishwasher/">GE bulaşık makinesi bölümümüz</a> her kodu tek tek kapsar; bu yazı aileleri, karşılaşma olasılığınızın en yüksek olduğu sırayla geziyor ve sonda makinenin en son sakladığı hatayı gösteren servis menüsü hilesiyle bitiyor.</p>
+<h2>Drenaj ailesi — C1'den C3'e</h2>
+<p>Üç kod, tek sistem. C1, drenaj pompasının kabı iki dakikadan uzun sürede boşaltamadığını söyler (bazı eski modellerde bunun yerine takılı kalmış bir tuşu bildirir); C2 pompanın hiç çalışmadığını ya da hattın tamamen tıkandığını; C3 ise "gerektiği gibi boşalmıyor" genel girişidir. Şüpheliler hiç değişmez: tıkalı filtre ve taban haznesi, burkulmuş drenaj hortumu, yakın zamanda takılmış ve knockout tıpası sökülmemiş bir çöp öğütücü ya da ölmüş bir drenaj pompası. <a href="https://tr.codefixcoffee.com/ge/dishwasher/c1/">C1 sayfamızdaki</a> ücretsiz işlerle başlayın: alt sepeti çekin, filtre ile taban haznesini temizleyin, lavabo altındaki hortumu kontrol edin. Pompa vızıldıyorsa ya da tamamen sessizse, yenisinin €40–€80 aralığında olduğunu bilin.</p>
+<h2>Dolum arızaları — C4, C5 ve H2O</h2>
+<ul>
+<li><strong>C4</strong> — fazla dolum veya elektrik kesintisinden sonra makinenin iki kez doldurması. Giriş vanası tam kapanmıyordur ya da dolumu durduracak şamandıra anahtarı kireç veya yabancı madde yüzünden takılı kalmıştır. Şamandıra kontrolü <a href="https://tr.codefixcoffee.com/ge/dishwasher/c4/">C4 sayfasında</a> anlatılır; makine kapalıyken bile tekne doluyorsa giriş vanası içeriden kaçırıyor demektir ve değişmelidir (€25–€50).</li>
+<li><strong>C5</strong> — az dolum: tanınan süre içinde yeterli su gelmemiştir. Besleme vanası kısmen kapalı, giriş filtresi tıkalı ya da giriş vanası zayıftır.</li>
+<li><strong>H2O</strong> — hiç su gelmemesi. Başka her şeyden önce lavabo altındaki vananın açık ve hortumun buruk olmadığını kontrol edin.</li>
+</ul>
+<h2>Isınma arızaları — C6'dan C8'e</h2>
+<p>C6, uzatılmış ısıtma süresinin sonunda bile suyun yaklaşık 49 °C'ye (120 °F) ulaşamadığını bildirir. Çevrimi başlatmadan önce mutfak musluğunu sıcak akıtın; makineye giren su soğuksa ısıtma elemanı basitçe yetişemeyebilir. Bulaşıklar soğuk ve ıslak çıkıyorsa ısıtma elemanının sürekliliğini multimetreyle ölçün — <a href="https://www.ifixit.com/">iFixit'in onarım kılavuzları</a> multimetre kullanımında iyi bir kaynaktır. Elemanlar €30–€60, yüksek limit termostat €10–€20 civarındadır. C7 su sıcaklık sensörü (termistör) devresinin bozulmasıdır: gevşek bir fiş veya ucuz bir sensör; bazı modellerde aynı kod bunun yerine bulanıklık sensörünü kapsar. C8 genelde ısıl değil mekaniktir: deterjan haznesi açılamamıştır, çünkü bir tabak yolu kapatmıştır ya da kurumuş deterjan mandalı kilitlemiştir.</p>
+<h2>888 ve CFE — kart kodları</h2>
+<p>Arıza hidrolikten çok elektronik olduğunda GE lafı dolandırmaz. <a href="https://tr.codefixcoffee.com/ge/dishwasher/888/">888</a> ana kontrol kartının kendi öz denetimini geçemediğini bildirir; çoğu zaman fırtına kaynaklı bir gerilim sıçraması bellek yazmacını bozmuştur, ara sıra da bir sızıntı kartı ıslatmıştır. <a href="https://tr.codefixcoffee.com/ge/dishwasher/cfe/">CFE</a> kapıya monte kullanıcı arayüzü ile ana kartın konuşmayı bırakmasıdır: genellikle menteşe bölgesinde aşınmış bir kablo demeti ya da ıslak bir konektör. İkisinde de ilk adım sigortadan güç kesip sıfırlamaktır; kod geri dönerse iş kartla biter — ana kart €90–€200, arayüz €60–€120.</p>
+<h2>Servis menüsü hilesi — son hatayı okuyun</h2>
+<p>Haftalardır arada duran bir bulaşık makinesi, önüne geçtiğinizde ekranda hiçbir şey göstermeyebilir. Kart hatırlar; çoğu GE modelinde sorabilirsiniz de:</p>
+<ol>
+<li>Kapağı tam açın.</li>
+<li>Start düğmesini beş saniye basılı tutarak servis menüsüne girin.</li>
+<li>Ekran kapı pervazının arkasında gizli modellerde bunun yerine Select Cycle ve Start düğmelerine birlikte beş saniye basın.</li>
+<li>Ekranda beliren son kayıtlı hatayı okuyun, sonra kapağı kapatın.</li>
+<li>Kartın kendisini sıfırlamak için sigortadan 60 saniye boyunca elektriği kesin.</li>
+</ol>
+<p>Kodu not edin, temizleyin, bir çevrim çalıştırın: üç hafta önce kaydedilmiş bir C3'ün yanında bugün taze bir C3 daha varsa, bu geçici bir aksaklık değil gerçek bir drenaj arızasıdır.</p>
+<h3>Türkiye'de ithal GE makinesi kullananlar için</h3>
+<p>ABD pazarı için üretilen GE bulaşık makineleri 120 V / 60 Hz üzerinedir; Türkiye şebekesi 230 V / 50 Hz olduğu için bu cihazlar uygun güçte bir transformatör olmadan çalıştırılamaz ve 50 Hz'de pompa ile motorun performansı tasarlandığı gibi olmayabilir. Resmî bir GE servis ağı Türkiye'de bulunmadığından bu kodlarla gelen onarımlar bağımsız beyaz eşya tamircilerine kalır. Bir de Türk mutfaklarında lavabo altına çöp öğütücü takılması yaygın değildir; C1–C3 tedavisinde knockout tıpası yerine drenaj hortumunun sifon bağlantısını ve hortum yüksekliğini kontrol etmek daha doğru ilk adımdır.</p>
+<h2>Onarımların maliyeti neye benzer</h2>
+<p>Neredeyse her C kodu çözümü bir pompa, bir vana, bir sensör veya deterjan haznesidir — parçalar €10 ile €80 arasında — artı elektriği kesip panel sökebiliyorsanız kendi emeğiniz. Kartlar istisnadır: €90–€200. Bir teknisyenin eve gelmesi teşhis artı parça olarak €120–€250 tutar; buna kart kodlarında değer, tıkalı bir filtre için nadiren ihtiyaç duyulur.</p>
+</main>
+<footer>codefixcoffee.com’dan onarım rehberleri ve hata kodu açıklamaları.</footer>
+</body></html>
