@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GE kurutma makinesi E kodları — termistörler, sigortalar ve takometre</title>
+<meta name="description" content="GE kurutma makinesinde E1, E3-E6, E4, E8 ve E11 — kapı anahtarı, termistörler, termal sigorta ve motor takometresi, eski model farkları ve maliyetler.">
+<link rel="canonical" href="https://tr.codefixcoffee.com/blog/ge-dryer-e-codes/">
+<link rel="alternate" hreflang="en" href="https://blog.codefixcoffee.com/post/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="fr" href="https://fr.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="de" href="https://de.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="es" href="https://es.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="it" href="https://it.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="pl" href="https://pl.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="nl" href="https://nl.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="pt" href="https://pt.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="hu" href="https://hu.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="cs" href="https://cs.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="ro" href="https://ro.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="sv" href="https://sv.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+  <link rel="alternate" hreflang="tr" href="https://tr.codefixcoffee.com/blog/ge-dryer-e-codes/" />
+<link rel="stylesheet" href="/blog/blog.css">
+<link rel="alternate" type="application/rss+xml" title="CodeFix Blog" href="/blog/rss.xml">
+<meta name="google-adsense-account" content="ca-pub-9660119725457689"><script>(function(){var u="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9660119725457689";var d=false;function l(){if(d)return;d=true;var s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";s.src=u;document.head.appendChild(s)}["scroll","pointerdown","keydown","touchstart"].forEach(function(e){addEventListener(e,l,{once:true,passive:true})});addEventListener("load",function(){setTimeout(l,3500)})})();</script></head>
+<body>
+<header class="site"><div class="in"><a class="brand" href="/blog/">☕ CodeFix Blog</a><span><a href="/">Siteye dön</a></span></div></header>
+<main>
+<h1>GE kurutma makinesi E kodları — termistörler, sigortalar ve takometre</h1>
+<p class="meta">2026-10-24</p>
+<p>GE, kurutma makineleri için resmî bir hata kodu listesi yayımlamayan az sayıdaki büyük üreticiden biri. Kodlar vardır, kontrol kartı bunları kaydeder; ama kullanıcılara anlamı hiçbir yerde anlatılmaz. Yine de desen öğrenilebilir: GE kurutma makinesi kodları dört bölgeye toplanır — kapı devresi, iki sıcaklık sensörü, ısıtma güvenlik sigortaları ve takometreli sürücü motoru. <a href="https://tr.codefixcoffee.com/ge/dryer/">GE kurutma makinesi bölümümüz</a> her kodu tek tek ele alıyor; bu yazının işi, ailenin nasıl birbirine bağlandığını ve eski model tuzaklarının nerede saklandığını göstermek.</p>
+<h2>Önce kayıtlı kodu okuyun</h2>
+<p>2016 ve sonrası GTD ile GFD serilerinde son hatayı kendiniz görüntüleyebilirsiniz. Makine kapalıyken <strong>Signal</strong> ve <strong>Temp</strong> tuşlarına aynı anda basılı tutun; yaklaşık beş saniye sonra servis modu açılır ve ekranda en güncel arıza belirir. SmartHQ destekli modellerde kayıtlı kodları uygulama da listeler. Amacınız yalnızca kartın hafızasını silmekse, makinenin fişini beş dakika çekmeniz yeterli.</p>
+<h2>E1: kapı anahtarı</h2>
+<p><a href="https://tr.codefixcoffee.com/ge/dryer/e1/">E1</a>, kartın kapıyı kapalı olarak görmediği anlamına gelir. Sorun çoğu zaman elektronikte değil mekaniktedir: aşınmış mandal, eğilmiş kanca pimi ya da artık tıklamayan bir anahtar.</p>
+<ul>
+<li>Kapağı iyice kapatıp Start'a basın; yarım kilitlenmiş kapı en sık karşılaşılan nedendir.</li>
+<li>Kapı üzerindeki mandal kanca pimini eğilmiş veya kırık kanatçık açısından inceleyin.</li>
+<li>Fişi çekin, ön paneli açın ve kapı anahtarı fişini kontrol edin; basıldığında tıklamayan anahtar değişmelidir. Parça fiyatı kabaca 10 € ile 25 € arasındadır.</li>
+</ul>
+<h2>E3'ten E6'ya: termistörler</h2>
+<p>GE kurutma makineleri hava sıcaklığını iki termistörle izler: ısıtıcı gövdesindeki giriş sensörü ve fan gövdesindeki çıkış sensörü. <a href="https://tr.codefixcoffee.com/ge/dryer/e3-to-e6/">E3-E6 ailesi</a>, bunlardan biri açık devre ya da kısa devre okuttuğunda tetiklenir. Bu kodları bozuk sensör kadar sık tetikleyen bir neden de gevşek veya korozyonlu kablolamadır; gerçekten tıkalı bir baca hattı ise sağlıklı bir makineyi bile aşırı ısıtıp aynı kodları yakabilir.</p>
+<ol>
+<li>Fişi 30 saniye çekin ve makineyi yeniden başlatın.</li>
+<li>Tüy filtresini temizleyin, baca hattının tıkalı olmadığından emin olun.</li>
+<li>Gövdeyi açın; termistör fişlerini ve kabloyu gevşek ya da oksitli kontaklar için inceleyin.</li>
+<li>Termistörü multimetreyle ölçün — oda sıcaklığında yaklaşık 10k ohm sağlıklıdır; açık devre okuyan sensör değiştirilir.</li>
+</ol>
+<p>Yedek termistör 10 € ile 25 € arasındadır. Dikkat: bazı modellerde E6 termistör değil, hava akışı kısıtlama kodudur; parça sipariş etmeden kendi modelinizdeki anlamı teyit edin.</p>
+<h2>E4: termal sigorta</h2>
+<p><a href="https://tr.codefixcoffee.com/ge/dryer/e4/">E4</a> ısı yok kodudur: tambur döner ama çamaşır kurumaz, çünkü güvenlik sigortalarından biri atmıştır. Termal sigorta boşuna atmaz — tüy kaynaklı hava akışı kısıtı ya da tıkalı baca, ısıtıcı elemanı aşırı ısıtır. Önce hava akışını onarın; yoksa yeni sigorta da atar. Ve termal sigortayı asla devre dışı bırakmayın: gerçek bir aşırı ısınmayı yangına çevirmeyi önleyen parça odur.</p>
+<ol>
+<li>Tüy filtresini ve dışarıya kadar giden tüm baca hattını temizleyin.</li>
+<li>Termal sigortayı ve ısıtıcı gövdesindeki yüksek limit termostatı ölçün; hangisi açık devre okuyorsa onu değiştirin.</li>
+<li>Isının geri döndüğünü kısa bir turda, bacayı geçici olarak ayırarak doğrulayın, sonra yeniden bağlayın.</li>
+</ol>
+<p>Sigortanın kendisi 5 € ile 15 €; yüksek limit termostatı 10 € ile 25 € tutarındadır.</p>
+<h2>E8 ve E11: takometre ve motor</h2>
+<p><a href="https://tr.codefixcoffee.com/ge/dryer/e8/">E8</a> güncel GE kurutma makinelerinde takometre kodudur: kart motoru çalıştırmış ama geriye hiç hız sinyali almamıştır. Takometre kablosu gevşemiş, tambur sıkışmış — kaymış kayış ya da arkasına kaçmış bir cisim — olabilir; ya da takometre veya motor arızalanmıştır. Takometre motor bloğunun parçası olduğundan, kesinleşen bir takometre arızası motor değişimi demektir: 80 € ile 150 €. Kayış ise 15 € ile 25 €.</p>
+<p>E11 hemen yanında durur: motor, kartın istediği işi yapmıyordur — aşınmış kayış, tutulmuş tambur rulosu ya da motor çalıştırma anahtarı veya motorun kendisi. İlk iş tamburu elle çevirmektir; sertlik motordan çok ruloya işaret eder. Kayış çıkarılmışken vınlayıp dönmeye başlamayan motor, motor değişimidir; rulo takımı ise takım başına 20 € ile 40 €.</p>
+<h2>Model yılı farkları</h2>
+<p>Üç tuzak kullanıcıyı yakalar. Birincisi, aynı numara her zaman aynı arıza değildir: bazı eski ve kombi modellerde E8 takometre değil tambur lambası ya da drenaj arızasıdır; parça almadan önce hangi makineye sahip olduğunuzu netleştirin. İkincisi, E6 bazı modellerde hava akışı, bazılarında termistör kodudur. Üçüncüsü, yukarıda anlatılan Signal+Temp servis modu 2016 sonrası GTD/GFD makineleri için geçerlidir; daha eski modellerde elinizde yalnızca arıza anındaki ekran görüntüsü kalır. Ailede ayrıca E7 — makinenin beslemenin iki bacağını da göremediği güç kaynağı sorunu — ve E14 — panelde takılı tuş — vardır; ikisi de ısıtmayla ilgili değildir. Bu arada <a href="https://www.geappliances.com/ge/support/">GE Appliances'ın kendi destek bölümünde</a> bile kurutucu kodlarının kapsamlı bir listesi yoktur; orada model numaranızla arama yapmak zorunda kalırsınız.</p>
+<h3>Türkiye'de pratik notlar</h3>
+<p>GE kurutma makineleri Türkiye'de resmî bir distribütör ağıyla satılmadığı için yedek parça çoğunlukla ithalatçı veya özel parça bayilerinden gelir; sipariş verirken kapı çerçevesinin içindeki model etiketini ve seri numarasını not edin, aynı görünen iki model farklı termistör kullanabilir. Kuzey Amerika üretimi makineler 120/240 V — 60 Hz şebekeler içindir; Türkiye'nin 230 V — 50 Hz şebekesinde bağlantıyı yetkili bir elektrikçiye doğrulatmadan çalıştırmayın. Balkon ve banyolarda kurulan uzun, kıvrımlı baca bağlantıları E4 ve E6'yı tetikleyen hava akışı kısıtlarının en sık kaynağıdır; hattı mümkün olduğunca kısa ve düz tutun.</p>
+<h2>Tamirler ne tutuyor?</h2>
+<p>Sensör ve anahtar seviyesindeki onarımlar ucuzdur: kapı anahtarı 10-25 €, termistör 10-25 €, termal sigorta 5-15 €, kayış 15-25 €, tambur rulosu takımı 20-40 €. Pahalı kalem sürücü motordur — 80 € ile 150 €; yaşlı bir kurutucuda bu, otomatik bir evet değil, değerlendirme kararıdır. Teknisyenin eve gelmesi teşhis artı parça için kabaca 120 € ile 250 € tutar; gövdeyi açmak istemiyorsanız motor devresi işleri için bu ücrete değer.</p>
+</main>
+<footer>codefixcoffee.com’dan onarım rehberleri ve hata kodu açıklamaları.</footer>
+</body></html>
